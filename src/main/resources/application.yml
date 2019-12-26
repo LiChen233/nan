@@ -1,0 +1,26 @@
+
+server:
+  servlet:
+    context-path: /book
+  port: 8088
+  multipart:
+    enabled: true
+    maxFileSize: 10MB
+    maxRequestSize: 40MB
+
+spring:
+  cache:
+    type: ehcache
+  datasource:
+        name: book
+        url: jdbc:mysql://47.100.173.103:3306/book?characterEncoding=utf-8
+        username: root
+        password:
+        driver-class-name: com.mysql.jdbc.Driver
+
+mybatis-plus:
+  mapper-locations: classpath:com/book/mapper/**/*.xml
+  type-aliases-package: com.book.entity
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰命名
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印SQL语句
