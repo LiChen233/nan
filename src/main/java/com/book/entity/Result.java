@@ -33,7 +33,7 @@ public class Result {
     public static Result fail(){
         Result res = Result.builder()
                 .code(500)
-                .msg("失败！")
+                .msg("错误！")
                 .build();
         return res;
     }

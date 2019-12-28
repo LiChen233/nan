@@ -131,14 +131,6 @@
             <artifactId>pinyin4j</artifactId>
             <version>2.5.0</version>
         </dependency>
-        <!-- doc转pdf-->
-        <dependency>
-            <groupId>com.jacob</groupId>
-            <artifactId>jacob</artifactId>
-            <version>1.18</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/src/main/resources/lib/jacob.jar</systemPath>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>

@@ -1,6 +1,7 @@
 package com.book.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.book.common.utils.UuidUtil;
 import com.book.entity.BorrowEntity;
 import com.book.entity.Result;
 import com.book.service.BorrowService;
@@ -25,6 +26,7 @@ public class BorrowController {
 
     @PostMapping("/")
     public Result insert(BorrowEntity o){
+        o.setId(UuidUtil.get32UUID());
         boolean b = borrowService.save(o);
         if (b){
             return Result.success().setData(o.getId());

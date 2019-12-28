@@ -1,6 +1,7 @@
 package com.book.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.book.common.utils.UuidUtil;
 import com.book.entity.BooksEntity;
 import com.book.entity.Result;
 import com.book.service.BooksService;
@@ -25,6 +26,7 @@ public class BooksController {
 
     @PostMapping("/")
     public Result insert(BooksEntity o){
+        o.setId(UuidUtil.get32UUID());
         boolean b = booksService.save(o);
         if (b){
             return Result.success().setData(o.getId());
