@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Accessors(chain = true)
 public class Result {
     private int code;
     private String msg;
@@ -20,18 +22,18 @@ public class Result {
     private Object data;
     private int count;
 
-    public static Result success(Object data){
+    public static Result success(){
         Result res = Result.builder()
                 .code(0)
-                .data(data)
+                .msg("成功！")
                 .build();
         return res;
     }
 
-    public static Result fail(Object data){
+    public static Result fail(){
         Result res = Result.builder()
-                .code(300)
-                .data(data)
+                .code(500)
+                .msg("失败！")
                 .build();
         return res;
     }
