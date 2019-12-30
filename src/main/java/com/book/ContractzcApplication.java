@@ -28,15 +28,4 @@ public class ContractzcApplication {
         factory.setMaxRequestSize("102400KB");
         return factory.createMultipartConfig();
     }
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**");
-            }
-        };
-    }
-
 }

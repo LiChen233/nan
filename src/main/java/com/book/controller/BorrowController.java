@@ -8,6 +8,7 @@ import com.book.service.BorrowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/borrow")
 public class BorrowController {

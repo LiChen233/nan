@@ -1,34 +1,34 @@
 package com.book.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.book.common.utils.UuidUtil;
+import com.book.entity.PressEntity;
 import com.book.entity.Result;
-import com.book.entity.StarEntity;
-import com.book.service.StarService;
+import com.book.service.PressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
-@RequestMapping("/star")
-public class StarController {
+@RequestMapping("press")
+public class PressController {
     @Autowired
-    private StarService starService;
+    private PressService pressService;
 
     @GetMapping("/")
-    public Result select(StarEntity o){
-        o = starService.getOne(new QueryWrapper<>(o));
-        if (null!=o){
-            return Result.success().setData(o);
+    public Result select(PressEntity o){
+        List<PressEntity> list = pressService.list(new QueryWrapper<>(o));
+        if (null!=list){
+            return Result.success().setData(list);
         }else {
             return Result.fail();
         }
     }
 
     @PostMapping("/")
-    public Result insert(StarEntity o){
-        o.setId(UuidUtil.get32UUID());
-        boolean b = starService.save(o);
+    public Result insert(PressEntity o){
+        boolean b = pressService.save(o);
         if (b){
             return Result.success().setData(o.getId());
         }else {
@@ -37,8 +37,8 @@ public class StarController {
     }
 
     @DeleteMapping("/")
-    public Result delete(StarEntity o){
-        boolean b = starService.removeById(o);
+    public Result delete(PressEntity o){
+        boolean b = pressService.removeById(o);
         if (b){
             return Result.success();
         }else {
@@ -47,8 +47,8 @@ public class StarController {
     }
 
     @PutMapping("/")
-    public Result update(StarEntity o){
-        boolean b = starService.updateById(o);
+    public Result update(PressEntity o){
+        boolean b = pressService.updateById(o);
         if (b){
             return Result.success();
         }else {

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.*;
 
+@CrossOrigin
 @RestController
 public class FilesController {
     @Autowired

@@ -2,10 +2,12 @@ package com.book.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.io.Serializable;
@@ -58,10 +60,14 @@ public class BooksEntity implements Serializable {
 	/**
 	 * 出版时间
 	 */
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date pushTime;
 	/**
 	 * 打印时间
 	 */
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date printTime;
 	/**
 	 * 版次
@@ -83,5 +89,5 @@ public class BooksEntity implements Serializable {
 	 * 状态
 	 */
 	private String status;
-
+	private String cover;
 }

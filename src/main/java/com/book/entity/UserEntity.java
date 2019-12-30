@@ -35,6 +35,10 @@ public class UserEntity implements Serializable {
 	 */
 	private String name;
 	/**
+	 *
+	 */
+	private String nickName;
+	/**
 	 * 
 	 */
 	private String phone;
@@ -42,5 +46,5 @@ public class UserEntity implements Serializable {
 	 * 
 	 */
 	private String pwd;
-
+	private Integer admin;
 }
