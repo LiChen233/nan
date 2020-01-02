@@ -1,9 +1,11 @@
 package com.book.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -23,6 +25,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Accessors(chain = true)
 @TableName("books")
 public class BooksEntity implements Serializable {
@@ -89,5 +92,32 @@ public class BooksEntity implements Serializable {
 	 * 状态
 	 */
 	private String status;
+	/**
+	 * 封面
+	 */
 	private String cover;
+	/**
+	 * 类型
+	 */
+	private String type;
+	/**
+	 * 搜索关键字
+	 */
+	@TableField(exist = false)
+	private String searchName;
+	/**
+	 * 出版时间
+	 */
+	@TableField(exist = false)
+	private String searchPushTime;
+	/**
+	 * 作者
+	 */
+	@TableField(exist = false)
+	private String searchAuthor;
+	/**
+	 * 出版社
+	 */
+	@TableField(exist = false)
+	private String searchPress;
 }

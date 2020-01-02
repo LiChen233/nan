@@ -3,6 +3,7 @@ package com.book.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.book.entity.BooksEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,5 +16,9 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface BooksDao extends BaseMapper<BooksEntity> {
-	
+    @Update("update books set count = count-1 where id = #{id}")
+	void borrowBook(String id);
+
+    @Update("update books set count = count+1 where id = #{id}")
+    void returnBook(String id);
 }

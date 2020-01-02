@@ -11,6 +11,7 @@ import com.book.entity.BooksEntity;
  * @date 2019-12-25 14:39:17
  */
 public interface BooksService extends IService<BooksEntity> {
-
+    void borrowBook(String id);
+    void returnBook(String id);
 }
 

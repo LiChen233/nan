@@ -27,14 +27,27 @@ public class BooksController {
         if (null==limit){
             limit=10;
         }
-        IPage<BooksEntity> iPage = booksService.page(new Page<>(page, limit),new QueryWrapper<>(o));
-        if (null!=o){
-            return Result.success()
-                    .setData(iPage.getRecords())
-                    .setCount((int) iPage.getTotal());
-        }else {
-            return Result.fail();
+        QueryWrapper<BooksEntity> wrapper = new QueryWrapper<>(o);
+        String searchName = o.getSearchName();
+        String searchAuthor = o.getSearchAuthor();
+        String searchPushTime = o.getSearchPushTime();
+        String searchPress = o.getSearchPress();
+        if (searchName !=null && !searchName.equals("")){
+            wrapper.like("name", searchName);
         }
+        if (searchAuthor !=null && !searchAuthor.equals("")){
+            wrapper.like("author", searchAuthor);
+        }
+        if (searchPushTime !=null && !searchPushTime.equals("")){
+            wrapper.ge("push_time", searchPushTime);
+        }
+        if (searchPress !=null && !searchPress.equals("")){
+            wrapper.eq("press", searchPress);
+        }
+        IPage<BooksEntity> iPage = booksService.page(new Page<>(page, limit),wrapper);
+        return Result.success()
+                .setData(iPage.getRecords())
+                .setCount((int) iPage.getTotal());
     }
 
     @PostMapping("/")

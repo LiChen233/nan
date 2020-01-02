@@ -16,40 +16,25 @@ import java.util.Date;
  * 
  * @author Mark
  * @email sunlightcs@gmail.com
- * @date 2019-12-25 14:39:17
+ * @date 2020-01-02 15:12:00
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Accessors(chain = true)
-@TableName("user")
-public class UserEntity implements Serializable {
+@TableName("types")
+public class TypesEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 * id
 	 */
 	@TableId
-	private String id;
+	private Integer id;
 	/**
-	 * 
+	 * 分类名字
 	 */
-	private String name;
-	/**
-	 *
-	 */
-	private String nickName;
-	/**
-	 * 
-	 */
-	private String phone;
-	/**
-	 * 
-	 */
-	private String pwd;
-	/**
-	 *
-	 */
-	private Integer admin;
+	private String typeName;
+
 }
