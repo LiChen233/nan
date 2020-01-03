@@ -3,6 +3,8 @@ package com.book.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.book.entity.StarEntity;
 
+import java.math.BigDecimal;
+
 /**
  * 
  *
@@ -11,6 +13,6 @@ import com.book.entity.StarEntity;
  * @date 2019-12-25 14:39:17
  */
 public interface StarService extends IService<StarEntity> {
-
+    BigDecimal getAvg(String bookId);
 }
 

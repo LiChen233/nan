@@ -7,9 +7,12 @@ import com.book.common.utils.UuidUtil;
 import com.book.entity.BooksEntity;
 import com.book.entity.Result;
 import com.book.service.BooksService;
+import com.book.service.StarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 
 @CrossOrigin
@@ -18,6 +21,8 @@ import java.util.List;
 public class BooksController {
     @Autowired
     private BooksService booksService;
+    @Autowired
+    private StarService starService;
 
     @GetMapping("/")
     public Result select(Integer page,Integer limit,BooksEntity o){
@@ -45,6 +50,12 @@ public class BooksController {
             wrapper.eq("press", searchPress);
         }
         IPage<BooksEntity> iPage = booksService.page(new Page<>(page, limit),wrapper);
+        for (BooksEntity entity : iPage.getRecords()) {
+            //通过书的id拿到该书的评分
+            BigDecimal avg = starService.getAvg(entity.getId());
+            if (null!=avg)
+            entity.setStar(avg.setScale(1, BigDecimal.ROUND_HALF_UP));
+        }
         return Result.success()
                 .setData(iPage.getRecords())
                 .setCount((int) iPage.getTotal());

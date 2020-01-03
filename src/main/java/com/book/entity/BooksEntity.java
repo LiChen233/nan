@@ -120,4 +120,9 @@ public class BooksEntity implements Serializable {
 	 */
 	@TableField(exist = false)
 	private String searchPress;
+	/**
+	 * 评分
+	 */
+	@TableField(exist = false)
+	private BigDecimal star;
 }

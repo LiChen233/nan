@@ -1,7 +1,9 @@
 package com.book.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -43,10 +46,19 @@ public class StarEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private String star;
+	private BigDecimal star;
 	/**
 	 * 
 	 */
 	private String remark;
-
+	/**
+	 * 评论时间
+	 */
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+	private Date upTime;
+	/**
+	 * 评论人名
+	 */
+	@TableField(exist = false)
+	private String nickName;
 }
